@@ -1,0 +1,11 @@
+[project]
+name = "mcp-relevador"
+version = "0.1.0"
+description = "Relevador: qué scripts conviene convertir en herramientas. Solo lectura."
+requires-python = ">=3.11"
+dependencies = [
+    "mcp>=1.9",
+]
+
+[tool.uv]
+package = false
