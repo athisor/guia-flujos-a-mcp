@@ -543,7 +543,8 @@ En Windows, `command` lleva la ruta a `.venv\\Scripts\\python.exe`, con las barr
 1. `claude mcp list`: cada servidor debe aparecer como `✓ Connected`. Si sale `✗ Failed`:
    - prueba el comando a mano. Debe quedarse esperando sin imprimir nada en stdout (Ctrl+C para salir);
    - revisa que no haya un `print` a stdout: los logs van a stderr;
-   - revisa la ruta del Python del `.venv` y que `uv sync` se haya corrido.
+   - revisa la ruta del Python del `.venv` y que `uv sync` se haya corrido;
+   - **en Windows, usa una ruta corta para el repo de MCP** (por ejemplo `C:\mcp`). Medido: dentro de una carpeta muy anidada, el servidor muere al arrancar con `DLL load failed ... El nombre del archivo o la extensión es demasiado largo` (una dependencia del SDK, `cryptography`, no carga su DLL). La misma copia en una ruta corta funciona.
 2. `claude mcp get <servidor>`: muestra el comando y el ámbito registrados.
 3. En una **sesión nueva** (o con `/mcp` en una abierta), pide una llamada real, por ejemplo «usa carpeta_resumen sobre esta carpeta», y comprueba que el agente usó `mcp__<servidor>__carpeta_resumen` y no un script.
 4. Anota en el `CATALOGO.md` la fecha y el resultado de la verificación.
